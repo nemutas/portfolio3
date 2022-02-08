@@ -18,6 +18,11 @@ class MyDocument extends Document {
 					<meta name="twitter:card" content="summary_large_image" />
 					<meta name="format-detection" content="telephone=no" />
 					<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+					{/* Font Optimization */}
+					<link
+						href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap"
+						rel="stylesheet"
+					/>
 				</Head>
 				<body>
 					<Main />
