@@ -1,6 +1,6 @@
 export const ogp = {
-	url: '',
+	url: 'https://portfolio3-black.vercel.app/',
 	title: 'Nemutas｜Portfolio',
 	description: "This site is Nemutas's portfolio.",
-	image: ''
+	image: 'https://portfolio3-black.vercel.app/assets/meta/og-image.png'
 }
