@@ -4,6 +4,7 @@ export const effects = [
 	'None',
 	'Distortion',
 	'RGB Shift',
+	'Invert Color',
 	'Ripple Distortion',
 	'Volumetric Light',
 	'Wave',

@@ -5,6 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Lights } from './Lights';
 import { Effects } from './postprocessing/Effects';
 import { DistortionPass } from './postprocessing/passes/DistortionPass';
+import { InvertColorPass } from './postprocessing/passes/InvertColorPass';
 import {
 	PixelMouseMotionPass
 } from './postprocessing/passes/pixel_mouse_motion/PixelMouseMotionPass';
@@ -32,19 +33,15 @@ export default function TCanvas() {
 			onCreated={({ camera }) => camera.lookAt(0, 10, 0)}>
 			{/* scene */}
 			<color attach="background" args={['#fff']} />
-			{/* camera controller */}
-			{/* <OrbitControls attach="orbitControls" target={[0, 10, 0]} /> */}
 			{/* lights */}
 			<Lights />
 			{/* objects */}
 			<SwirlHorns />
-			{/* helper */}
-			{/* <Stats /> */}
-			{/* <axesHelper /> */}
 			{/* effects */}
 			<Effects sRGBCorrection>
 				<DistortionPass />
 				<RGBShiftPass />
+				<InvertColorPass />
 				<RippleDistortionPass />
 				<VolumetricLightPass />
 				<WavePass />
