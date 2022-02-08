@@ -1,0 +1,42 @@
+.dummy {
+	position: relative;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	grid-gap: 5px;
+	flex-wrap: wrap;
+
+	display: grid;
+	grid-template-columns: 1fr auto;
+
+	color: #000;
+	background-color: red;
+	border: 1px solid red;
+	border-radius: 50%;
+
+	font-size: 2rem;
+	line-height: 0;
+	user-select: none;
+	font-weight: 500;
+	text-decoration: none;
+	list-style-type: none;
+	text-align: left;
+	backdrop-filter: blur(20px);
+
+	content: '';
+	cursor: pointer;
+	color: unset;
+
+	transform: rotate(45deg);
+	transform-origin: left;
+	transition: all 0.3s;
+
+	box-shadow: 0 0 20px 10px;
+}
