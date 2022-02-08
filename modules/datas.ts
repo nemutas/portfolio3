@@ -1,4 +1,4 @@
-import { SkillData, SkillDatas, WorkDatas } from './types';
+import { SkillDatas, WorkDatas } from './types';
 
 export const effects = [
 	'None',
