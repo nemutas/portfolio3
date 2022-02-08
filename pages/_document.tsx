@@ -11,10 +11,10 @@ class MyDocument extends Document {
 					<meta name="description" content={ogp.description} />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content={ogp.title} />
-					<meta property="og:url" content={ogp.url} />
+					{/* <meta property="og:url" content={ogp.url} /> */}
 					<meta property="og:description" content={ogp.description} />
 					<meta property="og:site_name" content={ogp.title} />
-					<meta property="og:image" content={ogp.image} />
+					{/* <meta property="og:image" content={ogp.image} /> */}
 					<meta name="twitter:card" content="summary_large_image" />
 					<meta name="format-detection" content="telephone=no" />
 					<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
