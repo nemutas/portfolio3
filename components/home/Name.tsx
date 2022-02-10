@@ -5,7 +5,7 @@ export const Name: VFC = () => {
 	return (
 		<div css={styles.container}>
 			<div css={styles.mainText}>Nemutas</div>
-			<div css={styles.subText}>Web Frontend Engineer {'&'} Creative Corder</div>
+			<div css={styles.subText}>Web Frontend Engineer {'&'} Creative Coder</div>
 		</div>
 	)
 }
