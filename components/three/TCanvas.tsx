@@ -5,6 +5,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Lights } from './Lights';
 import { Effects } from './postprocessing/Effects';
 import { DistortionPass } from './postprocessing/passes/DistortionPass';
+import { FXAAPass } from './postprocessing/passes/FXAAPass';
 import { InvertColorPass } from './postprocessing/passes/InvertColorPass';
 import {
 	PixelMouseMotionPass
@@ -47,6 +48,8 @@ export default function TCanvas() {
 				<WavePass />
 				<RippleMouseMotionPass />
 				<PixelMouseMotionPass />
+				{/* anti-aliasing */}
+				<FXAAPass />
 			</Effects>
 		</Canvas>
 	)
