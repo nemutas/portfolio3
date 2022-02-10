@@ -26,11 +26,6 @@ export const Menu: VFC = () => {
 						Qiita
 					</a>
 				</li>
-				<li css={styles.item}>
-					<a href="https://twitter.com/focru_ino" target="_blank" rel="noopener noreferrer">
-						Twitter
-					</a>
-				</li>
 			</ul>
 		</nav>
 	)
