@@ -10,3 +10,9 @@ https://portfolio3-black.vercel.app/
 * Next.js
 * TypeScript
 * React Three Fiber（Three.js）
+
+# License
+This source code is not MIT License.<br>
+
+* You can't use this for your productions / your projects.
+* You can see this source code and learn from it.
