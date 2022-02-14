@@ -22,6 +22,11 @@ export const workDatas: WorkDatas = {
 			app: 'https://nemutas.github.io/r3f-swaying-grass/'
 		},
 		{
+			title: 'Terracotta Layers',
+			image: '/assets/images/2022/terracotta_layers.png',
+			app: 'https://nemutas.github.io/r3f-terracotta-layers/'
+		},
+		{
 			title: 'Periodic Table',
 			image: '/assets/images/2022/periodic_table.png',
 			app: 'https://nemutas.github.io/r3f-periodic-table/'
