@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { skillDatas } from '../../modules/datas';
+import { colorTheme, skillDatas } from '../../modules/datas';
 import { SkillData } from '../../modules/types';
 import { Card } from './Card';
 
@@ -49,6 +49,7 @@ const styles = {
 	header: css`
 		margin-bottom: 10px;
 		font-size: 3.5rem;
+		color: ${colorTheme.light.mainText};
 	`,
 	skillGroup: css`
 		margin-bottom: 40px;

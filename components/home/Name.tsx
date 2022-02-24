@@ -1,5 +1,6 @@
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
+import { colorTheme } from '../../modules/datas';
 
 export const Name: VFC = () => {
 	return (
@@ -25,10 +26,10 @@ const styles = {
 	mainText: css`
 		font-size: 5rem;
 		line-height: 1;
-		color: #000;
+		color: ${colorTheme.light.mainText};
 	`,
 	subText: css`
 		font-size: 2rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 	`
 }

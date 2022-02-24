@@ -1,5 +1,15 @@
 import { SkillDatas, WorkDatas } from './types';
 
+export const colorTheme = {
+	light: {
+		background: '#fff',
+		mainText: '#000',
+		subText: '#999',
+		appText: '#fff',
+		divider: '#ccc'
+	}
+}
+
 export const effects = [
 	'None',
 	'Distortion',

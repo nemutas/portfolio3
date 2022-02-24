@@ -1,5 +1,6 @@
 import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
+import { colorTheme } from '../../modules/datas';
 
 export const Profile: VFC = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
@@ -66,16 +67,16 @@ const styles = {
 		padding: 0;
 		font-family: 'Poppins', sans-serif;
 		font-size: 3rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 		transition: all 0.5s;
 
 		&:hover {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 			cursor: pointer;
 		}
 
 		&.active {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 		}
 	`,
 	detailContainer: css`
@@ -86,7 +87,7 @@ const styles = {
 	divider: css`
 		width: 0%;
 		height: 2px;
-		background-color: #000;
+		background-color: ${colorTheme.light.mainText};
 		transition: all 0.5s;
 
 		&.active {
@@ -96,11 +97,12 @@ const styles = {
 	`,
 	subTitle: css`
 		font-size: 1.5rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 	`,
 	text: css`
 		padding-left: 20px;
 		font-size: 2rem;
+		color: ${colorTheme.light.mainText};
 	`,
 	link: css`
 		position: relative;
@@ -115,7 +117,7 @@ const styles = {
 			right: 0;
 			width: 20px;
 			height: 1px;
-			background-color: #000;
+			background-color: ${colorTheme.light.mainText};
 			transform-origin: right;
 			transition: all 0.3s;
 		}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React, { useEffect, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
+import { colorTheme } from '../../modules/datas';
 import { skillState } from '../../modules/store';
 import { SkillData } from '../../modules/types';
 
@@ -74,7 +75,7 @@ const styles = {
 	divider: css`
 		width: 100%;
 		height: 1px;
-		background-color: #000;
+		background-color: ${colorTheme.light.mainText};
 	`,
 	text: css`
 		padding-left: 5px;
@@ -82,6 +83,7 @@ const styles = {
 		align-items: center;
 		font-size: 2.5rem;
 		white-space: nowrap;
+		color: ${colorTheme.light.mainText};
 	`,
 	subText: css`
 		padding-left: 5px;
@@ -89,5 +91,6 @@ const styles = {
 		align-items: center;
 		font-size: 2rem;
 		white-space: nowrap;
+		color: ${colorTheme.light.mainText};
 	`
 }

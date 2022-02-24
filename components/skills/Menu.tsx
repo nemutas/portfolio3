@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
-import { skillCategories } from '../../modules/datas';
+import { colorTheme, skillCategories } from '../../modules/datas';
 import { skillState } from '../../modules/store';
 import { SkillCategories } from '../../modules/types';
 
@@ -57,7 +57,7 @@ const styles = {
 		padding: 0;
 		list-style-type: none;
 		font-size: 3rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 	`,
 	button: css`
 		position: relative;
@@ -68,7 +68,7 @@ const styles = {
 		text-align: left;
 		font-family: 'Roboto', sans-serif;
 		font-size: 3rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 
 		transition: all 0.5s;
 
@@ -78,12 +78,12 @@ const styles = {
 			bottom: 0;
 			width: 0%;
 			height: 2px;
-			background-color: #000;
+			background-color: ${colorTheme.light.mainText};
 			transition: all 0.5s;
 		}
 
 		&:hover {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 			cursor: pointer;
 			&::before {
 				width: 100%;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
-import { effects } from '../../modules/datas';
+import { colorTheme, effects } from '../../modules/datas';
 import { effectState } from '../../modules/store';
 import { EffectList } from '../../modules/types';
 
@@ -63,8 +63,6 @@ const styles = {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
-		font-size: 2.5rem;
-		color: #999;
 	`,
 	button: css`
 		position: relative;
@@ -75,7 +73,7 @@ const styles = {
 		text-align: right;
 		font-family: 'Poppins', sans-serif;
 		font-size: 2.5rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 		transition: all 0.5s;
 
 		&::after {
@@ -85,12 +83,12 @@ const styles = {
 			width: 0%;
 			height: 2px;
 			transform: translate(-100%, 0);
-			background-color: #000;
+			background-color: ${colorTheme.light.mainText};
 			transition: all 0.5s;
 		}
 
 		&:hover {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 			cursor: pointer;
 			&::after {
 				width: 100%;
@@ -98,7 +96,7 @@ const styles = {
 		}
 
 		&.current {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 		}
 	`
 }

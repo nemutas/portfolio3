@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
+import { colorTheme } from '../../modules/datas';
 
 export const Menu: VFC = () => {
 	return (
@@ -49,7 +50,7 @@ const styles = {
 		padding: 0;
 		list-style-type: none;
 		font-size: 3rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 	`,
 	item: css`
 		position: relative;
@@ -62,12 +63,12 @@ const styles = {
 			bottom: 0;
 			width: 0%;
 			height: 2px;
-			background-color: #000;
+			background-color: ${colorTheme.light.mainText};
 			transition: all 0.5s;
 		}
 
 		&:hover {
-			color: #000;
+			color: ${colorTheme.light.mainText};
 			&::before {
 				width: 100%;
 			}

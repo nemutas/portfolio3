@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
+import { colorTheme } from '../modules/datas';
 
 type SideNavigationLayoutProps = {
 	title: string
@@ -55,11 +56,11 @@ const styles = {
 	title: css`
 		font-size: 5rem;
 		line-height: 1;
-		color: #000;
+		color: ${colorTheme.light.mainText};
 	`,
 	sub: css`
 		font-size: 2rem;
-		color: #999;
+		color: ${colorTheme.light.subText};
 	`,
 	nav: css`
 		padding-top: 60px;
@@ -73,6 +74,7 @@ const styles = {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		color: ${colorTheme.light.mainText};
 
 		&::before,
 		&::after {
@@ -82,7 +84,7 @@ const styles = {
 			width: 15px;
 			height: 2px;
 			transform-origin: left;
-			background-color: #000;
+			background-color: ${colorTheme.light.mainText};
 			transition: all 0.3s;
 		}
 
@@ -101,6 +103,6 @@ const styles = {
 		position: relative;
 		width: 2px;
 		height: 100%;
-		background-color: #ccc;
+		background-color: ${colorTheme.light.divider};
 	`
 }
