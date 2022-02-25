@@ -1,28 +1,35 @@
 import Link from 'next/link';
-import React, { VFC } from 'react';
+import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
 
 export const Menu: VFC = () => {
+	const worksRef = useRef<HTMLLIElement>(null)
+	const skillsRef = useRef<HTMLLIElement>(null)
+	const githubRef = useRef<HTMLLIElement>(null)
+	const qiitaRef = useRef<HTMLLIElement>(null)
+
+	useColorManager([worksRef, skillsRef, githubRef, qiitaRef])
+
 	return (
 		<nav css={styles.container}>
 			<ul css={styles.list}>
-				<li css={styles.item}>
+				<li ref={worksRef} css={styles.item}>
 					<Link href="/works">
 						<a>Works</a>
 					</Link>
 				</li>
-				<li css={styles.item}>
+				<li ref={skillsRef} css={styles.item}>
 					<Link href="/skills">
 						<a>Skills</a>
 					</Link>
 				</li>
-				<li css={styles.item}>
+				<li ref={githubRef} css={styles.item}>
 					<a href="https://github.com/nemutas" target="_blank" rel="noopener noreferrer">
 						GitHub
 					</a>
 				</li>
-				<li css={styles.item}>
+				<li ref={qiitaRef} css={styles.item}>
 					<a href="https://qiita.com/nemutas" target="_blank" rel="noopener noreferrer">
 						Qiita
 					</a>
@@ -50,12 +57,14 @@ const styles = {
 		padding: 0;
 		list-style-type: none;
 		font-size: 3rem;
-		color: ${colorTheme.light.subText};
+		${colorStyles.subText}
 	`,
 	item: css`
 		position: relative;
 		width: 100%;
-		transition: all 0.5s;
+		transition: width 0.5s;
+
+		${colorStyles.textBefore}
 
 		&::before {
 			content: '';
@@ -63,12 +72,11 @@ const styles = {
 			bottom: 0;
 			width: 0%;
 			height: 2px;
-			background-color: ${colorTheme.light.mainText};
-			transition: all 0.5s;
+			transition: width 0.5s;
 		}
 
 		&:hover {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 			&::before {
 				width: 100%;
 			}

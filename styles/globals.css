@@ -17,3 +17,7 @@ a {
 	overflow: hidden;
 	user-select: none;
 }
+
+*:focus {
+	outline: none;
+}

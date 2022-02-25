@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
+import { DisplayModeButton } from '../components/home/DisplayModeButton';
 import { EffectMenu } from '../components/home/EffectMenu';
 import { Menu } from '../components/home/Menu';
 import { Name } from '../components/home/Name';
@@ -18,6 +19,7 @@ const Home: VFC = () => {
 				<Menu />
 				<Profile />
 				<EffectMenu />
+				<DisplayModeButton />
 			</div>
 		</Layout>
 	)

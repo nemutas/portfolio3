@@ -1,11 +1,14 @@
 import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
 
 export const Profile: VFC = () => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLButtonElement>(null)
 	const dividerRef = useRef<HTMLDivElement>(null)
+	const linkRef = useRef<HTMLAnchorElement>(null)
+
+	useColorManager([titleRef, dividerRef, linkRef])
 
 	const handleClick = () => {
 		containerRef.current!.classList.toggle('active')
@@ -24,7 +27,12 @@ export const Profile: VFC = () => {
 				<Block title="Birthday">August 5, 1991.</Block>
 				<Block title="Address">Tokyo, Japan</Block>
 				<Block title="Contact">
-					<a css={styles.link} href="https://twitter.com/focru_ino" target="_blank" rel="noopener noreferrer">
+					<a
+						ref={linkRef}
+						css={styles.link}
+						href="https://twitter.com/focru_ino"
+						target="_blank"
+						rel="noopener noreferrer">
 						Twitter DM
 					</a>
 				</Block>
@@ -35,10 +43,16 @@ export const Profile: VFC = () => {
 }
 
 const Block: VFC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
+	const textRef = useRef<HTMLDivElement>(null)
+
+	useColorManager([textRef])
+
 	return (
 		<div>
 			<div css={styles.subTitle}>{title}</div>
-			<div css={styles.text}>{children}</div>
+			<div ref={textRef} css={styles.text}>
+				{children}
+			</div>
 		</div>
 	)
 }
@@ -67,16 +81,16 @@ const styles = {
 		padding: 0;
 		font-family: 'Poppins', sans-serif;
 		font-size: 3rem;
-		color: ${colorTheme.light.subText};
 		transition: all 0.5s;
+		${colorStyles.subText}
 
 		&:hover {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 			cursor: pointer;
 		}
 
 		&.active {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 		}
 	`,
 	detailContainer: css`
@@ -87,28 +101,30 @@ const styles = {
 	divider: css`
 		width: 0%;
 		height: 2px;
-		background-color: ${colorTheme.light.mainText};
-		transition: all 0.5s;
+		${colorStyles.textDivider}
+		transition: width 0.5s;
 
 		&.active {
-			transition: all 0.5s 0.5s;
+			transition: width 0.5s 0.5s;
 			width: 100%;
 		}
 	`,
 	subTitle: css`
 		font-size: 1.5rem;
-		color: ${colorTheme.light.subText};
+		${colorStyles.subText}
 	`,
 	text: css`
 		padding-left: 20px;
 		font-size: 2rem;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`,
 	link: css`
 		position: relative;
 		display: flex;
 		align-items: center;
 		width: 140px;
+		${colorStyles.textBefore}
+		${colorStyles.textAfter}
 
 		&::before,
 		&::after {
@@ -117,9 +133,8 @@ const styles = {
 			right: 0;
 			width: 20px;
 			height: 1px;
-			background-color: ${colorTheme.light.mainText};
 			transform-origin: right;
-			transition: all 0.3s;
+			transition: transform 0.3s, width 0.3s;
 		}
 
 		&:hover {

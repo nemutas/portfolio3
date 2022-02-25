@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme, skillDatas } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
+import { skillDatas } from '../../modules/datas';
 import { SkillData } from '../../modules/types';
 import { Card } from './Card';
 
@@ -22,9 +22,15 @@ type SkillGroupProps = {
 }
 
 const SkillGroup: VFC<SkillGroupProps> = ({ header, datas }) => {
+	const headerRef = useRef<HTMLDivElement>(null)
+
+	useColorManager([headerRef])
+
 	return (
 		<div css={styles.skillGroup}>
-			<div css={styles.header}>{header}</div>
+			<div ref={headerRef} css={styles.header}>
+				{header}
+			</div>
 			<div css={styles.cardContainer}>
 				{datas.map((data, i) => (
 					<Card key={i} data={data} />
@@ -49,7 +55,7 @@ const styles = {
 	header: css`
 		margin-bottom: 10px;
 		font-size: 3.5rem;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`,
 	skillGroup: css`
 		margin-bottom: 40px;

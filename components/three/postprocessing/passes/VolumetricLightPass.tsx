@@ -7,25 +7,41 @@ import { useEffect, useMemo, useRef, VFC } from 'react';
 import * as THREE from 'three';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { useSnapshot } from 'valtio';
-import { extend } from '@react-three/fiber';
+import { extend, useFrame } from '@react-three/fiber';
+import { GUIController } from '../../../../modules/gui';
 import { effectState } from '../../../../modules/store';
 
 extend({ ShaderPass })
 
+const datas = {
+	exposure: 0.2,
+	decay: 0.95,
+	density: 1,
+	weight: 0.2,
+	samples: 100
+}
+
 export const VolumetricLightPass: VFC = () => {
 	const passRef = useRef<ShaderPass>(null)
 	const effectSnap = useSnapshot(effectState)
+
+	// const gui = GUIController.instance.setFolder('VolumetricLight')
+	// gui.addNumericSlider(datas, 'exposure', 0, 1, 0.01)
+	// gui.addNumericSlider(datas, 'decay', 0, 1, 0.01)
+	// gui.addNumericSlider(datas, 'density', 0, 1, 0.01)
+	// gui.addNumericSlider(datas, 'weight', 0, 1, 0.01)
+	// gui.addNumericSlider(datas, 'samples', 10, 100, 10)
 
 	const shader: THREE.Shader = useMemo(() => {
 		return {
 			uniforms: {
 				tDiffuse: { value: null },
 				u_lightPosition: { value: new THREE.Vector2(0.5, 0.7) },
-				u_exposure: { value: 0.2 },
-				u_decay: { value: 0.95 },
-				u_density: { value: 1 },
-				u_weight: { value: 0.2 },
-				u_samples: { value: 100 }
+				u_exposure: { value: datas.exposure },
+				u_decay: { value: datas.decay },
+				u_density: { value: datas.density },
+				u_weight: { value: datas.weight },
+				u_samples: { value: datas.samples }
 			},
 			vertexShader: vertexShader,
 			fragmentShader: fragmentShader
@@ -35,6 +51,16 @@ export const VolumetricLightPass: VFC = () => {
 	useEffect(() => {
 		passRef.current!.enabled = effectSnap.currentName === 'Volumetric Light'
 	}, [effectSnap.currentName])
+
+	useFrame(() => {
+		if (passRef.current!.enabled) {
+			passRef.current!.uniforms.u_exposure.value = datas.exposure
+			passRef.current!.uniforms.u_decay.value = datas.decay
+			passRef.current!.uniforms.u_density.value = datas.density
+			passRef.current!.uniforms.u_weight.value = datas.weight
+			passRef.current!.uniforms.u_samples.value = datas.samples
+		}
+	})
 
 	return <shaderPass ref={passRef} attachArray="passes" args={[shader]} />
 }

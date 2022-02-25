@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import React, { useEffect, useRef, VFC } from 'react';
+import React, { useEffect, useMemo, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
-import { colorTheme } from '../../modules/datas';
-import { skillState } from '../../modules/store';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
+import { appState, skillState } from '../../modules/store';
 import { SkillData } from '../../modules/types';
 
 type CardProps = {
@@ -12,7 +12,13 @@ type CardProps = {
 
 export const Card: VFC<CardProps> = ({ data }) => {
 	const skillSnap = useSnapshot(skillState)
+	const appSnap = useSnapshot(appState)
 	const cardRef = useRef<HTMLDivElement>(null)
+	const nameRef = useRef<HTMLDivElement>(null)
+	const dividerRef = useRef<HTMLDivElement>(null)
+	const experienceRef = useRef<HTMLDivElement>(null)
+
+	useColorManager([nameRef, dividerRef, experienceRef])
 
 	useEffect(() => {
 		if (skillSnap.category === 'All') {
@@ -23,6 +29,17 @@ export const Card: VFC<CardProps> = ({ data }) => {
 			}
 		}
 	}, [skillSnap.category])
+
+	const invertImageAmount = useMemo(() => {
+		let amount = 0
+		if (appSnap.displayMode === 'dark') {
+			const name = data.iconName
+			if (name === 'nextjs' || name === 'three' || name === 'express' || name === 'github') {
+				amount = 1
+			}
+		}
+		return amount
+	}, [appSnap.displayMode])
 
 	const handleMouseEnter = () => {
 		if (!cardRef.current!.classList.contains('disable')) {
@@ -36,11 +53,21 @@ export const Card: VFC<CardProps> = ({ data }) => {
 
 	return (
 		<div ref={cardRef} css={styles.container} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-			<Image src={`/assets/images/skill/${data.iconName}.png`} width={80} height={80} objectFit="contain" />
+			<Image
+				css={styles.img(invertImageAmount)}
+				src={`/assets/images/skill/${data.iconName}.png`}
+				width={80}
+				height={80}
+				objectFit="contain"
+			/>
 			<div css={styles.detail}>
-				<div css={styles.text}>{data.name}</div>
-				<div css={styles.divider} />
-				<div css={styles.subText}>{data.experience}</div>
+				<div ref={nameRef} css={styles.text}>
+					{data.name}
+				</div>
+				<div ref={dividerRef} css={styles.divider} />
+				<div ref={experienceRef} css={styles.subText}>
+					{data.experience}
+				</div>
 			</div>
 		</div>
 	)
@@ -65,6 +92,11 @@ const styles = {
 			filter: grayscale(100%) opacity(50%);
 		}
 	`,
+
+	img: (amount: number) => css`
+		filter: invert(${amount});
+	`,
+
 	detail: css`
 		position: absolute;
 		left: 85px;
@@ -75,7 +107,7 @@ const styles = {
 	divider: css`
 		width: 100%;
 		height: 1px;
-		background-color: ${colorTheme.light.mainText};
+		${colorStyles.textDivider}
 	`,
 	text: css`
 		padding-left: 5px;
@@ -83,7 +115,7 @@ const styles = {
 		align-items: center;
 		font-size: 2.5rem;
 		white-space: nowrap;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`,
 	subText: css`
 		padding-left: 5px;
@@ -91,6 +123,6 @@ const styles = {
 		align-items: center;
 		font-size: 2rem;
 		white-space: nowrap;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`
 }

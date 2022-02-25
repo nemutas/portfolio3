@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme } from '../../modules/datas';
+import { colorStyles } from '../../modules/colorManager';
 import { WorkDataDetail } from '../../modules/types';
 
 type CardProps = {
@@ -57,7 +57,7 @@ const styles = {
 		font-family: 'Roboto', sans-serif;
 	`,
 	title: css`
-		color: ${colorTheme.light.appText};
+		${colorStyles.appText}
 		font-size: 2.5rem;
 	`
 }

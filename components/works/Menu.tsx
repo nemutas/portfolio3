@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
-import { colorTheme, years } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
+import { years } from '../../modules/datas';
 import { workState } from '../../modules/store';
 import { Years } from '../../modules/types';
 
@@ -22,6 +23,8 @@ type ItemProps = {
 const Item: VFC<ItemProps> = ({ year }) => {
 	const buttonRef = useRef<HTMLButtonElement>(null)
 	const workSnap = useSnapshot(workState)
+
+	useColorManager([buttonRef])
 
 	useEffect(() => {
 		if (workSnap.year === year) {
@@ -57,7 +60,7 @@ const styles = {
 		padding: 0;
 		list-style-type: none;
 		font-size: 3rem;
-		color: ${colorTheme.light.subText};
+		${colorStyles.subText}
 	`,
 	button: css`
 		position: relative;
@@ -68,8 +71,9 @@ const styles = {
 		text-align: left;
 		font-family: 'Roboto', sans-serif;
 		font-size: 3rem;
-		color: ${colorTheme.light.subText};
-		transition: all 0.5s;
+		transition: width 0.5s;
+		${colorStyles.subText}
+		${colorStyles.textBefore}
 
 		&::before {
 			content: '';
@@ -77,12 +81,11 @@ const styles = {
 			bottom: 0;
 			width: 0%;
 			height: 2px;
-			background-color: ${colorTheme.light.mainText};
-			transition: all 0.5s;
+			transition: width 0.5s;
 		}
 
 		&:hover {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 			cursor: pointer;
 			&::before {
 				width: 100%;
@@ -90,7 +93,7 @@ const styles = {
 		}
 
 		&.current {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 		}
 	`
 }

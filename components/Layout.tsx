@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import React, { VFC } from 'react';
+import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
+import { colorStyles, useColorManager } from '../modules/colorManager';
 
 type LayoutProps = {
 	title?: string
@@ -10,6 +11,10 @@ type LayoutProps = {
 
 export const Layout: VFC<LayoutProps> = props => {
 	const { title = 'Nemutas｜Portfolio', description = "Nemutas's portfolio site.", children } = props
+	const mainRef = useRef<HTMLDivElement>(null)
+
+	useColorManager([mainRef])
+
 	return (
 		<>
 			<Head>
@@ -18,7 +23,9 @@ export const Layout: VFC<LayoutProps> = props => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main css={styles.container}>{children}</main>
+			<main ref={mainRef} css={styles.container}>
+				{children}
+			</main>
 		</>
 	)
 }
@@ -31,5 +38,6 @@ const styles = {
 		position: relative;
 		width: 100vw;
 		height: 100vh;
+		${colorStyles.background}
 	`
 }

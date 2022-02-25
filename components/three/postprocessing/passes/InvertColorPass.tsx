@@ -17,7 +17,7 @@ export const InvertColorPass: VFC = () => {
 			uniforms: {
 				tDiffuse: { value: null },
 				u_time: { value: 0 },
-				u_strength: { value: 0.5 }
+				u_strength: { value: 0.8 }
 			},
 			vertexShader: vertexShader,
 			fragmentShader: fragmentShader

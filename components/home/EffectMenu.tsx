@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, VFC } from 'react';
 import { useSnapshot } from 'valtio';
 import { css } from '@emotion/react';
-import { colorTheme, effects } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
+import { effects } from '../../modules/datas';
 import { effectState } from '../../modules/store';
 import { EffectList } from '../../modules/types';
 
@@ -24,6 +25,8 @@ type EffectItemProps = {
 const EffectItem: VFC<EffectItemProps> = ({ name }) => {
 	const buttonRef = useRef<HTMLButtonElement>(null)
 	const effectSnap = useSnapshot(effectState)
+
+	useColorManager([buttonRef])
 
 	useEffect(() => {
 		if (effectSnap.currentName === name) {
@@ -73,8 +76,9 @@ const styles = {
 		text-align: right;
 		font-family: 'Poppins', sans-serif;
 		font-size: 2.5rem;
-		color: ${colorTheme.light.subText};
-		transition: all 0.5s;
+		transition: width 0.5s;
+		${colorStyles.subText}
+		${colorStyles.textAfter}
 
 		&::after {
 			content: '';
@@ -83,12 +87,11 @@ const styles = {
 			width: 0%;
 			height: 2px;
 			transform: translate(-100%, 0);
-			background-color: ${colorTheme.light.mainText};
-			transition: all 0.5s;
+			transition: width 0.5s;
 		}
 
 		&:hover {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 			cursor: pointer;
 			&::after {
 				width: 100%;
@@ -96,7 +99,7 @@ const styles = {
 		}
 
 		&.current {
-			color: ${colorTheme.light.mainText};
+			${colorStyles.mainText}
 		}
 	`
 }

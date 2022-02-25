@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import React, { VFC } from 'react';
+import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme } from '../modules/datas';
+import { colorStyles, useColorManager } from '../modules/colorManager';
 
 type SideNavigationLayoutProps = {
 	title: string
@@ -11,16 +11,25 @@ type SideNavigationLayoutProps = {
 
 export const SideNavigationLayout: VFC<SideNavigationLayoutProps> = props => {
 	const { title, subText, children } = props
+	const titleRef = useRef<HTMLDivElement>(null)
+	const homeRef = useRef<HTMLAnchorElement>(null)
+
+	useColorManager([titleRef, homeRef])
+
 	return (
 		<div css={styles.container}>
 			<div css={styles.contentsContainer}>
 				<div css={styles.titleContainer}>
-					<div css={styles.title}>{title}</div>
+					<div ref={titleRef} css={styles.title}>
+						{title}
+					</div>
 					{subText && <div css={styles.sub}>{subText}</div>}
 				</div>
 				<nav css={styles.nav}>{children}</nav>
 				<Link href="/">
-					<a css={styles.toHome}>Home</a>
+					<a ref={homeRef} css={styles.toHome}>
+						Home
+					</a>
 				</Link>
 			</div>
 			<div css={styles.divider} />
@@ -56,11 +65,11 @@ const styles = {
 	title: css`
 		font-size: 5rem;
 		line-height: 1;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`,
 	sub: css`
 		font-size: 2rem;
-		color: ${colorTheme.light.subText};
+		${colorStyles.subText}
 	`,
 	nav: css`
 		padding-top: 60px;
@@ -74,7 +83,9 @@ const styles = {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
+		${colorStyles.textBefore}
+		${colorStyles.textAfter}
 
 		&::before,
 		&::after {
@@ -84,7 +95,6 @@ const styles = {
 			width: 15px;
 			height: 2px;
 			transform-origin: left;
-			background-color: ${colorTheme.light.mainText};
 			transition: all 0.3s;
 		}
 
@@ -103,6 +113,6 @@ const styles = {
 		position: relative;
 		width: 2px;
 		height: 100%;
-		background-color: ${colorTheme.light.divider};
+		${colorStyles.divider}
 	`
 }

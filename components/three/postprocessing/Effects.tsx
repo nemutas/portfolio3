@@ -29,8 +29,8 @@ export const Effects: VFC<EffectsProps> = props => {
 	return (
 		<effectComposer ref={composerRef} args={[gl]}>
 			<renderPass attachArray="passes" args={[scene, camera]} />
-			{children}
 			{sRGBCorrection && <shaderPass attachArray="passes" args={[GammaCorrectionShader]} />}
+			{children}
 		</effectComposer>
 	)
 }

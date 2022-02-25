@@ -29,3 +29,11 @@ export type SkillDatas = {
 	cloudService: SkillData[]
 	developmentTool: SkillData[]
 }
+
+export type DisplayMode = 'light' | 'dark'
+
+export type ApplicationState = {
+	displayMode: DisplayMode
+	transition: boolean
+	defaultLoaded: boolean
+}

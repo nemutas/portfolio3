@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, VFC } from 'react';
 import THREE from 'three';
 import { OrbitControls, Stats } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Background } from './Background';
 import { Lights } from './Lights';
 import { Effects } from './postprocessing/Effects';
 import { DistortionPass } from './postprocessing/passes/DistortionPass';
@@ -33,7 +34,7 @@ export default function TCanvas() {
 			shadows
 			onCreated={({ camera }) => camera.lookAt(0, 10, 0)}>
 			{/* scene */}
-			<color attach="background" args={['#fff']} />
+			<Background />
 			{/* lights */}
 			<Lights />
 			{/* objects */}

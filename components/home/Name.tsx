@@ -1,11 +1,17 @@
-import React, { VFC } from 'react';
+import React, { useRef, VFC } from 'react';
 import { css } from '@emotion/react';
-import { colorTheme } from '../../modules/datas';
+import { colorStyles, useColorManager } from '../../modules/colorManager';
 
 export const Name: VFC = () => {
+	const mainRef = useRef<HTMLDivElement>(null)
+
+	useColorManager([mainRef])
+
 	return (
 		<div css={styles.container}>
-			<div css={styles.mainText}>Nemutas</div>
+			<div ref={mainRef} css={styles.mainText}>
+				Nemutas
+			</div>
 			<div css={styles.subText}>Web Frontend Engineer {'&'} Creative Coder</div>
 		</div>
 	)
@@ -26,10 +32,10 @@ const styles = {
 	mainText: css`
 		font-size: 5rem;
 		line-height: 1;
-		color: ${colorTheme.light.mainText};
+		${colorStyles.mainText}
 	`,
 	subText: css`
 		font-size: 2rem;
-		color: ${colorTheme.light.subText};
+		${colorStyles.subText}
 	`
 }
