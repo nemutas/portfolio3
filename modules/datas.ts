@@ -21,6 +21,11 @@ export const years = ['2022', '2021'] as const
 export const workDatas: WorkDatas = {
 	2022: [
 		{
+			title: 'Operable Gyroid Sphere',
+			image: '/assets/images/2022/gyroid_sphere_operable.png',
+			app: 'https://nemutas.github.io/r3f-gyroid-sphere-operable/'
+		},
+		{
 			title: 'Gyroid Sphere',
 			image: '/assets/images/2022/gyroid_sphere.png',
 			app: 'https://nemutas.github.io/r3f-gyroid-sphere/'
