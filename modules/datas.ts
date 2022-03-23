@@ -21,6 +21,11 @@ export const years = ['2022', '2021'] as const
 export const workDatas: WorkDatas = {
 	2022: [
 		{
+			title: 'Normal Color',
+			image: '/assets/images/2022/normal_color.png',
+			app: 'https://nemutas.github.io/r3f-normal-color/'
+		},
+		{
 			title: 'Waver',
 			image: '/assets/images/2022/waver.png',
 			app: 'https://nemutas.github.io/r3f-waver/'
