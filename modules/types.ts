@@ -36,4 +36,5 @@ export type ApplicationState = {
 	displayMode: DisplayMode
 	transition: boolean
 	defaultLoaded: boolean
+	endLoading: boolean
 }

@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
+    "@react-three/cannon": "^4.6.1",
     "@react-three/drei": "^8.8.1",
     "@react-three/fiber": "^7.0.26",
+    "gsap": "^3.9.1",
     "lil-gui": "^0.16.1",
     "next": "12.0.10",
     "react": "17.0.2",

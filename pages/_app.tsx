@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 	useEffect(() => {
 		const mode = localStorage.getItem(localStorageKeys.displayMode)
 		if (!appSnap.defaultLoaded && mode) {
-			appState.displayMode = mode as DisplayMode
+			// appState.displayMode = mode as DisplayMode
+			appState.displayMode = 'dark'
 			appState.defaultLoaded = true
 		}
 	}, [])
