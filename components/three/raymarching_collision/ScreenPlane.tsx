@@ -106,7 +106,7 @@ void main() {
     rayPos = camPos + totalDist * ray;
   }
 
-  vec3 color = vec3(0.02);
+  vec3 color = vec3(0.0);
 
   if(totalDist < tMax) {
     vec3 normal = calcNormal(rayPos);
