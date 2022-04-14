@@ -21,6 +21,11 @@ export const years = ['2022', '2021'] as const
 export const workDatas: WorkDatas = {
 	2022: [
 		{
+			title: 'Kirifuda Works Clone',
+			image: '/assets/images/2022/kirifuda.png',
+			app: 'https://nemutas.github.io/r3f-kirifuda/'
+		},
+		{
 			title: 'Flowmap',
 			image: '/assets/images/2022/flowmap.png',
 			app: 'https://nemutas.github.io/r3f-flowmap/'
