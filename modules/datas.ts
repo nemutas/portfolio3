@@ -21,6 +21,11 @@ export const years = ['2022', '2021'] as const
 export const workDatas: WorkDatas = {
 	2022: [
 		{
+			title: 'Repeat Texture',
+			image: '/assets/images/2022/repeat_texture.png',
+			app: 'https://nemutas.github.io/r3f-repeat-texture/'
+		},
+		{
 			title: 'Monopo London Clone',
 			image: '/assets/images/2022/monopo_london.png',
 			app: 'https://nemutas.github.io/r3f-monopo-london/'
