@@ -36,7 +36,7 @@ export const Profile: VFC = () => {
 						Twitter DM
 					</a>
 				</Block>
-				<Block title="Message">Currently looking for a job. Please contact me via Twitter DM.</Block>
+				<Block title="Message">I am a web front-end developer in Tokyo, Japan.</Block>
 			</div>
 		</div>
 	)
