@@ -1,4 +1,4 @@
-import { SkillDatas, WorkDatas } from './types';
+import { SkillDatas, WorkDatas } from './types'
 
 export const localStorageKeys = {
 	displayMode: 'display-mode',
@@ -20,6 +20,11 @@ export const years = ['2022', '2021'] as const
 
 export const workDatas: WorkDatas = {
 	2022: [
+		{
+			title: 'HA-LABO Effect',
+			image: '/assets/images/2022/ha-labo-effect.png',
+			app: 'https://nemutas.github.io/ha-labo-effect/',
+		},
 		{
 			title: 'Invisible',
 			image: '/assets/images/2022/invisible.png',
