@@ -21,6 +21,16 @@ export const years = ['2022', '2021'] as const
 export const workDatas: WorkDatas = {
 	2022: [
 		{
+			title: 'Sound Waves',
+			image: '/assets/images/2022/sound-waves.png',
+			app: 'https://nemutas.github.io/sound-waves/',
+		},
+		{
+			title: 'Sante Effect',
+			image: '/assets/images/2022/sante-effect.png',
+			app: 'https://nemutas.github.io/sante-effect/',
+		},
+		{
 			title: 'HA-LABO Effect',
 			image: '/assets/images/2022/ha-labo-effect.png',
 			app: 'https://nemutas.github.io/ha-labo-effect/',
